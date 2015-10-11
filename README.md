@@ -1,6 +1,8 @@
 Github Trending Cli
 ===================
 
+[![PyPI version](https://badge.fury.io/py/github-trending.svg)](https://badge.fury.io/py/github-trending)
+
 This python package lists the trending repositories from github.
 A Cli for Github trending repositories
 
