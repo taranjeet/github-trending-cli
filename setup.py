@@ -4,7 +4,7 @@ from setuptools import setup
 import sys
 
 setup(
-    name='trending-now',
+    name='github-trending',
     version='1.0',
     description='Trending repos and developers on Github',
     author='Taranjeet Singh',
@@ -28,14 +28,14 @@ setup(
     keywords = "github trending repo now developers trending-repo",
     author_email='reachtotj@gmail.com',
     url='https://github.com/staranjeet/github-trending-cli',
-    packages=['trendingnow'],
+    packages=['githubtrending'],
     install_requires=[
         "click>=5.0",
         "requests>=2.7.0"
     ] + (["colorama==0.3.3"] if "win" in sys.platform else []),
     entry_points = {
         'console_scripts': [
-            'trendingnow = trendingnow.trending:cli'
+            'githubtrending = githubtrending.trending:cli'
       ],
     }
 )
