@@ -7,12 +7,12 @@ A Cli for Github trending repositories
 Install
 =======
 
-* ###Using `pip`
+* Using `pip`
 ```
 pip install github-trending
 ```
 
-* ### From source
+* From source
 
 ```
 git clone https://github.com/staranjeet/github-trending-cli
