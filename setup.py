@@ -5,8 +5,9 @@ import sys
 
 setup(
     name='github-trending',
-    version='1.0.2',
-    description='Trending repos and developers on Github',
+    version='1.0.3',
+    description='Trending repositories and developers on Github',
+    long_description='This python packages lists the trending repositories and developers on Github on the console. It is available as a command line utility.',
     author='Taranjeet Singh',
     license='MIT',
     classifiers=[
