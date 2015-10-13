@@ -1,5 +1,5 @@
 *.pyc
-pyenv/*
+pyenv*/*
 *.egg-info/
 dist/*
 setup.cfg

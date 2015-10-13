@@ -1,8 +1,14 @@
+from __future__ import ( 
+						absolute_import, 
+						division, 
+						print_function)
+
 import requests
 import json
 import click
 import os
 import textwrap
+
 
 URL = 'http://github-trending.appspot.com'
 
@@ -16,8 +22,8 @@ def parse_page():
 
 	try:
 		r = requests.get(URL)
-	except Exception,e:
-		print 'Error in retriving info. Check your net connection'
+	except Exception as e:
+		print ('Error in retriving info. Check your net connection')
 
 	if r.status_code == 200:
 		return json.loads(r.text)
@@ -100,6 +106,6 @@ def write_console(repos):
 		click.secho("%*s" % (SIZE.DESC,eachRepo['DESC']), bold=True,fg=COLOR.DESC)
 
 
-
-
+if __name__ == '__main__':
+	base_data('ALL')
 

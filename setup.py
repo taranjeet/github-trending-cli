@@ -5,7 +5,7 @@ import sys
 
 setup(
     name='github-trending',
-    version='1.0.1',
+    version='1.0.2',
     description='Trending repos and developers on Github',
     author='Taranjeet Singh',
     license='MIT',
@@ -24,8 +24,15 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.0',
+        'Programming Language :: Python :: 3.1',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5'
     ],
-    keywords = "github trending repo now developers trending-repo",
+    keywords = "github trending repo developers trending-repo",
     author_email='reachtotj@gmail.com',
     url='https://github.com/staranjeet/github-trending-cli',
     packages=['githubtrending'],
