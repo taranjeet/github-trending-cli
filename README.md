@@ -28,7 +28,17 @@ Usage
 ```
 githubtrending 				# list 25 trending repositories on github
 
-githubtrending --help		# lists the help				
+```
+
+Available Options
+=================
+
+```
+
+ --help 				Lists the help and option available
+ -r, --repo 			Lists 25 trending repositories
+ -d, --dev 				Lists 25 trending developers
+
 ```
 
 Todos
@@ -42,6 +52,9 @@ Todos
 Licence
 ====
 Open sourced under [MIT License](LICENSE)
+
+Package Link
+============
 
 Pypi [link](https://pypi.python.org/pypi/github-trending)
 
