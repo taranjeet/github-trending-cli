@@ -1,6 +1,6 @@
 import click
 
-from helpers import base_data
+from .helpers import base_data
 
 
 @click.command()
