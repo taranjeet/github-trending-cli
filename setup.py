@@ -5,7 +5,7 @@ import sys
 
 setup(
     name='github-trending',
-    version='1.0',
+    version='1.0.1',
     description='Trending repos and developers on Github',
     author='Taranjeet Singh',
     license='MIT',
