@@ -11,22 +11,22 @@ Install
 
 * Using `pip`
 ```
-pip install github-trending
+$ pip install github-trending
 ```
 
 * From source
 
 ```
-git clone https://github.com/staranjeet/github-trending-cli
-cd github-trending-cli
-python setup.py install
+$ git clone https://github.com/staranjeet/github-trending-cli
+$ cd github-trending-cli
+$ python setup.py install
 ```
 
 Usage
 =====
 
 ```
-githubtrending 				# list 25 trending repositories on github
+$ githubtrending 				# list 25 trending repositories on github
 
 ```
 
@@ -45,7 +45,7 @@ Todos
 =====
 
 - [ ] Support for a particular language
-- [ ] Support for Trending Developers
+- [X] Support for Trending Developers
 - [ ] Catch Exception
 - [ ] Proper output to console
 
