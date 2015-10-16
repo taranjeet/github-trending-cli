@@ -9,7 +9,7 @@ import click
 import os
 import textwrap
 
-URL = 'http://localhost:8080/'
+URL = 'http://github-trending.appspot.com'
 
 USER_REQUEST = {
 	'REPO'		: 'TRENDINGREPO',
