@@ -51,7 +51,7 @@ Todos
 
 Licence
 ====
-Open sourced under [MIT License](LICENSE)
+Open sourced under [MIT License](LICENSE.txt)
 
 Package Link
 ============
