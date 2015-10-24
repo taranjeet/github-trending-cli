@@ -47,7 +47,7 @@ Todos
 - [ ] Support for a particular language
 - [X] Support for Trending Developers
 - [ ] Catch Exception
-- [ ] Proper output to console
+- [X] Proper output to console
 
 Licence
 ====
