@@ -1,11 +1,11 @@
-import json
-import os
 from __future__ import (
 	absolute_import,
 	division,
 	print_function
 )
 
+import os
+import json
 import click
 import requests
 import textwrap
@@ -128,7 +128,8 @@ def print_each_description(text, descSize, descColor, excludingDescSum, C):
 					optSize = lastSpace
 
 			if i == 0:
-				click.secho("%*s" % (-descSize, text[:optSize]), bold=True, fg=descColor, nl=False)
+				click.secho("%*s" % (-descSize, text[:optSize]), 
+					bold=True, fg=descColor, nl=False)
 			else:
 				click.secho("%*s" % (excludingDescSum-1, ' '), bold=True, fg=descColor, nl=False)
 				click.secho("%*s" % (-C, text[:optSize]), bold=True, fg=descColor)
