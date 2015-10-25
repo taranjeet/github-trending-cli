@@ -7,7 +7,9 @@ setup(
     name='github-trending',
     version='1.0.5',
     description='Trending repositories and developers on Github',
-    long_description='This python packages lists the trending repositories and developers on Github on the console. It is available as a command line utility.',
+    long_description='''This python packages lists the trending repositories
+     and developers on Github on the console. It is available as a command line
+     utility.''',
     author='Taranjeet Singh',
     license='MIT',
     classifiers=[
@@ -33,7 +35,7 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5'
     ],
-    keywords = "github trending repo developers trending-repo",
+    keywords="github trending repo developers trending-repo",
     author_email='reachtotj@gmail.com',
     url='https://github.com/staranjeet/github-trending-cli',
     packages=['githubtrending'],
@@ -41,9 +43,9 @@ setup(
         "click>=5.0",
         "requests>=2.7.0"
     ] + (["colorama==0.3.3"] if "win" in sys.platform else []),
-    entry_points = {
+    entry_points={
         'console_scripts': [
             'githubtrending = githubtrending.trending:cli'
-      ],
+            ],
     }
 )
