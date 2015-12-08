@@ -48,6 +48,9 @@ Todos
 - [X] Support for Trending Developers
 - [ ] Catch Exception
 - [X] Proper output to console
+- [ ] Parse directly from github
+- [ ] Modify this to use to Docopt
+- [ ] Prettify the output on the terminal
 
 Licence
 ====
