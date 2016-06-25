@@ -35,5 +35,12 @@ class TestGithubTrending(unittest.TestCase):
         repo_desc = githubtrending.get_trending_repo_description(tree)
         self.assertEqual(data.TRENDING_REPO_COUNT, len(repo_desc))
 
+    def test_get_trending_repo_meta(self):
+        tree, status_code = githubtrending.make_etree(data.TRENDING_REPO_URL)
+        self.assertEqual(status_code, 200)
+        repo_meta = githubtrending.get_trending_repo_meta(tree)
+        self.assertEqual(data.TRENDING_REPO_COUNT, len(repo_meta))
+
+
 if __name__ == '__main__':
     unittest.main()
