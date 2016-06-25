@@ -24,6 +24,9 @@ def make_etree(url):
         response = etree.HTML(response.text)
     return (response, status_code)
 
+def get_trending_repo_names(tree):
+    repos = tree.xpath('//h3[@class="repo-list-name"]/a/@href')
+    return repos
 
 @click.command()
 @click.option(
