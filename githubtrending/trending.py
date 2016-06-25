@@ -41,6 +41,22 @@ def get_trending_repo_meta(tree):
     repo_meta = tree.xpath('//p[@class="repo-list-meta"]')
     return repo_meta
 
+def get_trending_repo_stars_and_languages(repo_meta):
+    dot = '•'.decode('utf8').encode('utf8')
+    repo_stars_and_langauges = []
+    for each in repo_meta:
+        meta = each.text.strip().encode('utf8')
+        stars, language = '', 'unknown'
+        if dot in meta:
+            temp = meta.split(dot)
+            for each_option in temp:
+                if "stars" in each_option:
+                    stars = replace_new_lines_and_strip(each_option)
+                elif "built by" not in each_option.lower() and "stars" not in each_option.lower():
+                    language = replace_new_lines_and_strip(each_option)
+            repo_stars_and_langauges.append([stars, language])
+    return repo_stars_and_langauges
+
 @click.command()
 @click.option(
     '--repo', '-r', is_flag=True,
