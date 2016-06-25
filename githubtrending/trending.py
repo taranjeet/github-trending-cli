@@ -28,6 +28,10 @@ def get_trending_repo_names(tree):
     repos = tree.xpath('//h3[@class="repo-list-name"]/a/@href')
     return repos
 
+def get_trending_repo_description(tree):
+    repo_desc = tree.xpath('//p[@class="repo-list-description"]/text()')
+    return repo_desc
+
 @click.command()
 @click.option(
     '--repo', '-r', is_flag=True,
