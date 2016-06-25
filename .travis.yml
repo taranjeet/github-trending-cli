@@ -3,6 +3,7 @@ python:
     - "2.7"
 install:
     - "pip install ."
+    - "pip install lxml"
     - "pip install coveralls"
 script:
     - "coverage run --source=githubtrending -m test.test_github_trending"
