@@ -59,6 +59,19 @@ def get_trending_repo_stars_and_languages(repo_meta):
             repo_stars_and_langauges.append([stars, language])
     return repo_stars_and_langauges
 
+def get_trending_repos(**kwargs):
+    repos = []
+    url = TRENDING_REPO_URL
+    tree, status_code = make_etree(url)
+    if status_code == 200:
+        repo_names = get_trending_repo_names(tree)
+        repo_desc = get_trending_repo_description(tree)
+        repo_meta = get_trending_repo_meta(tree)
+        repo_stars_and_languages = get_trending_repo_stars_and_languages(repo_meta)
+        repos = zip(repo_names, repo_desc, repo_stars_and_languages)
+    return repos
+
+
 @click.command()
 @click.option(
     '--repo', '-r', is_flag=True,
