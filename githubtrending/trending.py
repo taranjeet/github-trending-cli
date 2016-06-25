@@ -33,6 +33,10 @@ def get_trending_repo_description(tree):
     repo_desc = [" ".join([x for x in each.itertext()]) for each in repo_desc]
     return repo_desc
 
+def get_trending_repo_meta(tree):
+    repo_meta = tree.xpath('//p[@class="repo-list-meta"]')
+    return repo_meta
+
 @click.command()
 @click.option(
     '--repo', '-r', is_flag=True,
