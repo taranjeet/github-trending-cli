@@ -8,6 +8,9 @@ from .helpers import base_data
 
 requests.packages.urllib3.disable_warnings()
 
+def replace_new_lines_and_strip(s):
+    return s.replace('\n', '').replace('\r', '').strip()
+
 
 def read_page(url, timeout=5):
 
