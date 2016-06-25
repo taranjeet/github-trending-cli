@@ -48,5 +48,10 @@ class TestGithubTrending(unittest.TestCase):
         repo_stars_and_langauges = githubtrending.get_trending_repo_stars_and_languages(repo_meta)
         self.assertEqual(data.TRENDING_REPO_COUNT, len(repo_stars_and_langauges))
 
+    def test_get_trending_repos(self):
+        repos = githubtrending.get_trending_repos()
+        self.assertEqual(data.TRENDING_REPO_COUNT, len(repos))
+
+
 if __name__ == '__main__':
     unittest.main()
