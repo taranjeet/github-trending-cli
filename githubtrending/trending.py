@@ -1,6 +1,21 @@
+import requests
+
 import click
 
 from .helpers import base_data
+
+requests.packages.urllib3.disable_warnings()
+
+
+def read_page(url, timeout=5):
+
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:11.0) Gecko/20100101 Firefox/11.0'}
+    try:
+        response = requests.get(url, timeout=timeout, headers=headers)
+    except requests.exceptions.ConnectionError as e:  # noqa
+        return(None, False)
+
+    return(response, response.status_code)
 
 
 @click.command()
