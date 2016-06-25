@@ -1,4 +1,5 @@
 import requests
+from lxml import etree
 
 import click
 
@@ -16,6 +17,12 @@ def read_page(url, timeout=5):
         return(None, False)
 
     return(response, response.status_code)
+
+def make_etree(url):
+    response, status_code = read_page(url)
+    if status_code == 200:
+        response = etree.HTML(response.text)
+    return (response, status_code)
 
 
 @click.command()
