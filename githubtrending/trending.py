@@ -35,6 +35,7 @@ def get_trending_repo_names(tree):
 def get_trending_repo_description(tree):
     repo_desc = tree.xpath('//p[@class="repo-list-description"]')
     repo_desc = [" ".join([x for x in each.itertext()]) for each in repo_desc]
+    repo_desc = [replace_new_lines_and_strip(each) for each in repo_desc]
     return repo_desc
 
 def get_trending_repo_meta(tree):
