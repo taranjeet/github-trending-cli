@@ -89,9 +89,10 @@ def get_col_size(data):
 
     name, lang, star = [0]*3
     for eachR in data:
-        name = max(L(eachR.get("NAME", "")), name)
-        lang = max(L(eachR.get("LANG", "")), lang)
-        star = max(L(eachR.get("STAR", "")), star)
+        repo_name, desc, [stars, language] = eachR
+        name = max(L(repo_name), name)
+        lang = max(L(language), lang)
+        star = max(L(stars), star)
 
     return {
         "NAME": name+1,
