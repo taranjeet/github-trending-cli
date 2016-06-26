@@ -187,20 +187,21 @@ def write_to_console_repo(data):
 
     for idx, eachRepo in enumerate(data):
         click.echo()
+        repo_name, description, [stars, language] = eachRepo
         click.secho(
             "%*s" % (printSize["IDX"], str(idx+1)),
             nl=False, bold=True, fg=COLOR.IDX)
         click.secho(
-            "%*s" % (printSize["NAME"], eachRepo['NAME']),
+            "%*s" % (printSize["NAME"], repo_name),
             nl=False, bold=True, fg=COLOR.NAME)
         click.secho(
-            "%*s" % (printSize["LANG"], eachRepo['LANG']),
+            "%*s" % (printSize["LANG"], language),
             nl=False, bold=True, fg=COLOR.LANG)
         click.secho(
-            "%*s" % (printSize["STAR"], eachRepo['STAR']),
+            "%*s" % (printSize["STAR"], stars),
             nl=False, bold=True, fg=COLOR.STARS)
         print_each_description(
-            eachRepo["DESC"], printSize["DESC"],
+            description, printSize["DESC"],
             COLOR.DESC, excludingDescSum, C)
 
 
