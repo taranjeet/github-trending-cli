@@ -73,6 +73,11 @@ def get_trending_repos(**kwargs):
         repos = zip(repo_names, repo_desc, repo_stars_and_languages)
     return repos
 
+def get_trending_dev_names(tree):
+    devs = tree.xpath('//h2[@class="user-leaderboard-list-name"]')
+    devs = [" ".join([x for x in each.itertext()]) for each in devs]
+    devs = [replace_new_lines_and_multiple_spaces(replace_new_lines_and_strip(each)) for each in devs]
+    return devs
 
 @click.command()
 @click.option(
