@@ -11,6 +11,9 @@ requests.packages.urllib3.disable_warnings()
 def replace_new_lines_and_strip(s):
     return s.strip().strip('\n')
 
+def replace_new_lines_and_multiple_spaces(s):
+    return ' '.join(s.replace('\n', '').split())
+
 
 def read_page(url, timeout=5):
 
