@@ -79,6 +79,12 @@ def get_trending_dev_names(tree):
     devs = [replace_new_lines_and_multiple_spaces(replace_new_lines_and_strip(each)) for each in devs]
     return devs
 
+def get_trending_dev_repo_names(tree):
+    dev_repo_names = tree.xpath('//span[@class="repo"]')
+    dev_repo_names = [" ".join([x for x in each.itertext()]) for each in dev_repo_names]
+    dev_repo_names = [replace_new_lines_and_strip(each) for each in dev_repo_names]
+    return dev_repo_names
+
 @click.command()
 @click.option(
     '--repo', '-r', is_flag=True,
