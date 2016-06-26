@@ -2,16 +2,14 @@
 import requests
 from lxml import etree
 
-import click
 
-from .helpers import base_data
 
 TRENDING_REPO_URL = 'http://github.com/trending'
 
 requests.packages.urllib3.disable_warnings()
 
 def replace_new_lines_and_strip(s):
-    return s.replace('\n', '').replace('\r', '').strip()
+    return s.strip().strip('\n')
 
 
 def read_page(url, timeout=5):
