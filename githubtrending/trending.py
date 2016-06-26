@@ -91,6 +91,17 @@ def get_trending_dev_repo_desc(tree):
     dev_repo_desc = [replace_new_lines_and_strip(each) for each in dev_repo_desc]
     return dev_repo_desc
 
+def get_trending_devs(**kwargs):
+    devs = []
+    url = TRENDING_DEV_URL
+    tree, status_code = make_etree(url)
+    if status_code == 200:
+        dev_names = get_trending_dev_names(tree)
+        dev_repo_names = get_trending_dev_repo_names(tree)
+        dev_repo_desc = get_trending_dev_repo_desc(tree)
+        devs = zip(dev_names, dev_repo_names, dev_repo_desc)
+    return devs
+
 
 @click.command()
 @click.option(
