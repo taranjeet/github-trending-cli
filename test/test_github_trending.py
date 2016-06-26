@@ -58,5 +58,12 @@ class TestGithubTrending(unittest.TestCase):
         repos = githubtrending.get_trending_dev_names(tree)
         self.assertEqual(data.TRENDING_REPO_COUNT, len(repos))
 
+    def test_get_trending_dev_repo_names(self):
+        tree, status_code = githubtrending.make_etree(data.TRENDING_DEV_URL)
+        self.assertEqual(status_code, 200)
+        repos = githubtrending.get_trending_dev_repo_names(tree)
+        self.assertEqual(data.TRENDING_REPO_COUNT, len(repos))
+
+
 if __name__ == '__main__':
     unittest.main()
