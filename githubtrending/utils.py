@@ -1,3 +1,13 @@
+import os
+
+
+def get_console_size():
+    '''
+    returns no of rows, no of cols
+    '''
+    return map(int, os.popen('stty size', 'r').read().split())
+
+
 def get_print_size_for_repo(data):
     name, lang, star = [0]*3
     for each in data:
