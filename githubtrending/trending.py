@@ -2,9 +2,12 @@
 import requests
 from lxml import etree
 
+from . import writers
+
 
 
 TRENDING_REPO_URL = 'http://github.com/trending'
+
 
 requests.packages.urllib3.disable_warnings()
 
@@ -71,6 +74,7 @@ def get_trending_repos(**kwargs):
         repo_meta = get_trending_repo_meta(tree)
         repo_stars_and_languages = get_trending_repo_stars_and_languages(repo_meta)
         repos = zip(repo_names, repo_desc, repo_stars_and_languages)
+        writers.print_trending_repos(repos)
     return repos
 
 def get_trending_dev_names(tree):
@@ -100,6 +104,7 @@ def get_trending_devs(**kwargs):
         dev_repo_names = get_trending_dev_repo_names(tree)
         dev_repo_desc = get_trending_dev_repo_desc(tree)
         devs = zip(dev_names, dev_repo_names, dev_repo_desc)
+        writers.print_trending_devs(devs)
     return devs
 
 
