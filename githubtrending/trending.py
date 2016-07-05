@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import click
 import requests
 from lxml import etree
 
@@ -116,22 +117,21 @@ def get_trending_devs(**kwargs):
 @click.option(
     '--dev', '-d', is_flag=True,
     help="Lists the trending developers.")
-def cli(repo, dev):
+def main(repo, dev):
     '''
     A command line utility to see the trending repositories
     and developers on Github
     '''
+
     try:
         if repo:
-            base_data('REPO')
-            return
+            get_trending_repos()
         if dev:
-            base_data('DEV')
-            return
+            get_trending_devs()
         # if the user does not passes any argument then list the trending repo
         if not(repo and dev):
-            base_data('REPO')
-            return
+            get_trending_repos()
+        return
     except Exception as e:
         click.secho(e.message, fg="red", bold=True)
 
