@@ -68,7 +68,10 @@ def get_trending_repo_stars_and_languages(repo_meta):
 
 def get_trending_repos(**kwargs):
     repos = []
+    language = kwargs.get('language', None)
     url = TRENDING_REPO_URL
+    if language:
+        url = url + '/' + language
     tree, status_code = make_etree(url)
     if status_code == 200:
         repo_names = get_trending_repo_names(tree)
@@ -131,8 +134,11 @@ def main(repo, dev, lang):
     }
     try:
         if repo:
+            get_trending_repos(**opts)
         if dev:
         # if the user does not passes any argument then list the trending repo
+        if not repo and not dev:
+            get_trending_repos(**opts)
         return
     except Exception as e:
         click.secho(e.message, fg="red", bold=True)
