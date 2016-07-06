@@ -79,7 +79,10 @@ class TestGithubTrending(unittest.TestCase):
         self.assertEqual(data.TRENDING_REPO_COUNT, len(repos))
 
     def test_get_trending_devs(self):
+        captured_output = StringIO()
+        sys.stdout = captured_output
         devs = githubtrending.get_trending_devs()
+        sys.stdout = sys.__stdout__
         self.assertEqual(data.TRENDING_REPO_COUNT, len(devs))
 
 if __name__ == '__main__':
