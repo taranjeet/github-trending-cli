@@ -1,4 +1,9 @@
+import sys
 import unittest
+try:
+    from StringIO import StringIO
+except Exception as e:
+    from io import StringIO
 
 from githubtrending import trending as githubtrending
 
@@ -49,7 +54,10 @@ class TestGithubTrending(unittest.TestCase):
         self.assertEqual(data.TRENDING_REPO_COUNT, len(repo_stars_and_langauges))
 
     def test_get_trending_repos(self):
+        captured_output = StringIO()
+        sys.stdout = captured_output
         repos = githubtrending.get_trending_repos()
+        sys.stdout = sys.__stdout__
         self.assertEqual(data.TRENDING_REPO_COUNT, len(repos))
 
     def test_get_trending_dev_names(self):
