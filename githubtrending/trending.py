@@ -117,20 +117,22 @@ def get_trending_devs(**kwargs):
 @click.option(
     '--dev', '-d', is_flag=True,
     help="Lists the trending developers.")
-def main(repo, dev):
+@click.option('--lang', '-l', help='Specify the language')
+def main(repo, dev, lang):
     '''
     A command line utility to see the trending repositories
     and developers on Github
     '''
-
+    language = None
+    if lang:
+        language = str(lang)
+    opts = {
+        'language': language
+    }
     try:
         if repo:
-            get_trending_repos()
         if dev:
-            get_trending_devs()
         # if the user does not passes any argument then list the trending repo
-        if not(repo and dev):
-            get_trending_repos()
         return
     except Exception as e:
         click.secho(e.message, fg="red", bold=True)
