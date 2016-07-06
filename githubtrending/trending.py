@@ -102,7 +102,10 @@ def get_trending_dev_repo_desc(tree):
 
 def get_trending_devs(**kwargs):
     devs = []
+    language = kwargs.get('language', None)
     url = TRENDING_DEV_URL
+    if language:
+        url = url + '/' + language
     tree, status_code = make_etree(url)
     if status_code == 200:
         dev_names = get_trending_dev_names(tree)
@@ -136,6 +139,7 @@ def main(repo, dev, lang):
         if repo:
             get_trending_repos(**opts)
         if dev:
+            get_trending_devs(**opts)
         # if the user does not passes any argument then list the trending repo
         if not repo and not dev:
             get_trending_repos(**opts)
