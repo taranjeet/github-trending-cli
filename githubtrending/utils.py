@@ -9,6 +9,7 @@ def get_console_size():
         size = map(int, f.read().split())
     return size
 
+
 def get_print_size_for_repo(data):
     name, lang, star = [0]*3
     for each in data:
