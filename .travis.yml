@@ -6,6 +6,8 @@ install:
     - "pip install lxml"
     - "pip install coveralls"
 script:
+    - "flake8 githubtrending"
+    - "flake8 test"
     - "coverage run --source=githubtrending -m test.test_github_trending"
 after_script:
     - coveralls
