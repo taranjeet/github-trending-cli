@@ -106,9 +106,12 @@ def get_trending_dev_repo_desc(tree):
 def get_trending_devs(**kwargs):
     devs = []
     language = kwargs.get('language', None)
+    timespan = kwargs.get('timespan', None)
     url = TRENDING_DEV_URL
     if language:
         url = url + '/' + language
+    if timespan:
+        url = url + '?since={}'.format(timespan)
     tree, status_code = make_etree(url)
     if status_code == 200:
         dev_names = get_trending_dev_names(tree)
