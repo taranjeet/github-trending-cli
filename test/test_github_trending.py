@@ -1,5 +1,8 @@
 import sys
 import unittest
+
+from click.testing import CliRunner
+
 try:
     from StringIO import StringIO
 except Exception as e:
@@ -85,6 +88,35 @@ class TestGithubTrending(unittest.TestCase):
         devs = githubtrending.get_trending_devs()
         sys.stdout = sys.__stdout__
         self.assertEqual(data.TRENDING_REPO_COUNT, len(devs))
+
+
+class GithubTrendingCliTest(unittest.TestCase):
+
+    def __init__(self, *args, **kwargs):
+        self.runner = CliRunner()
+        super(GithubTrendingCliTest, self).__init__(*args, **kwargs)
+
+    def test_github_trending_with_no_args(self):
+        result = self.runner.invoke(githubtrending.main, [])
+        assert result.exit_code == 0
+
+    def test_github_trending_with_repo_as_args(self):
+        result = self.runner.invoke(githubtrending.main, ['--repo'])
+        assert result.exit_code == 0
+
+    def test_github_trending_with_dev_as_args(self):
+        result = self.runner.invoke(githubtrending.main, ['--dev'])
+        assert result.exit_code == 0
+
+    def test_github_trending_with_repo_and_lang_as_args(self):
+        result = self.runner.invoke(githubtrending.main, ['--repo', '--lang=python'])
+        assert result.exit_code == 0
+
+    def test_github_trending_with_dev_and_timespan_as_args(self):
+        result = self.runner.invoke(githubtrending.main, ['--dev', '--week'])
+        assert result.exit_code == 0
+
+
 
 if __name__ == '__main__':
     unittest.main()
