@@ -69,9 +69,12 @@ def get_trending_repo_stars_and_languages(repo_meta):
 def get_trending_repos(**kwargs):
     repos = []
     language = kwargs.get('language', None)
+    timespan = kwargs.get('timespan', None)
     url = TRENDING_REPO_URL
     if language:
         url = url + '/' + language
+    if timespan:
+        url = url + '?since={}'.format(timespan)
     tree, status_code = make_etree(url)
     if status_code == 200:
         repo_names = get_trending_repo_names(tree)
