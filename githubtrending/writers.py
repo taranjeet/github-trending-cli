@@ -8,7 +8,7 @@ def print_title(is_repo=True):
     title = "TRENDING {} ON GITHUB".format("REPOSITORIES" if is_repo else "DEVELOPERS")
     click.echo()
     click.secho("%s" % ('#'*cols), bold=True)
-    click.secho("%*s" % (cols/2, title), bold=True)
+    click.secho("%*s" % (cols//2, title), bold=True)
     click.secho("%s" % ('#'*cols), bold=True)
 
 
