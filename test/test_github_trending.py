@@ -9,6 +9,7 @@ from githubtrending import trending as githubtrending
 
 from . import data
 
+
 class TestGithubTrending(unittest.TestCase):
 
     def test_read_page(self):
