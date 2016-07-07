@@ -117,6 +117,5 @@ class GithubTrendingCliTest(unittest.TestCase):
         assert result.exit_code == 0
 
 
-
 if __name__ == '__main__':
     unittest.main()
