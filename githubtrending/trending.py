@@ -5,16 +5,15 @@ from lxml import etree
 
 from . import writers
 
-
-
 TRENDING_REPO_URL = 'http://github.com/trending'
 TRENDING_DEV_URL = 'http://github.com/trending/developers'
 
-
 requests.packages.urllib3.disable_warnings()
+
 
 def replace_new_lines_and_strip(s):
     return s.strip().strip('\n')
+
 
 def replace_new_lines_and_multiple_spaces(s):
     return ' '.join(s.replace('\n', '').split())
@@ -30,15 +29,18 @@ def read_page(url, timeout=5):
 
     return(response, response.status_code)
 
+
 def make_etree(url):
     response, status_code = read_page(url)
     if status_code == 200:
         response = etree.HTML(response.text)
     return (response, status_code)
 
+
 def get_trending_repo_names(tree):
     repos = tree.xpath('//h3[@class="repo-list-name"]/a/@href')
     return repos
+
 
 def get_trending_repo_description(tree):
     repo_desc = tree.xpath('//p[@class="repo-list-description"]')
@@ -46,9 +48,11 @@ def get_trending_repo_description(tree):
     repo_desc = [replace_new_lines_and_strip(each) for each in repo_desc]
     return repo_desc
 
+
 def get_trending_repo_meta(tree):
     repo_meta = tree.xpath('//p[@class="repo-list-meta"]')
     return repo_meta
+
 
 def get_trending_repo_stars_and_languages(repo_meta):
     dot = '•'.decode('utf8').encode('utf8')
@@ -65,6 +69,7 @@ def get_trending_repo_stars_and_languages(repo_meta):
                     language = replace_new_lines_and_strip(each_option)
             repo_stars_and_langauges.append([stars, language])
     return repo_stars_and_langauges
+
 
 def get_trending_repos(**kwargs):
     repos = []
@@ -85,11 +90,13 @@ def get_trending_repos(**kwargs):
         writers.print_trending_repos(repos)
     return repos
 
+
 def get_trending_dev_names(tree):
     devs = tree.xpath('//h2[@class="user-leaderboard-list-name"]')
     devs = [" ".join([x for x in each.itertext()]) for each in devs]
     devs = [replace_new_lines_and_multiple_spaces(replace_new_lines_and_strip(each)) for each in devs]
     return devs
+
 
 def get_trending_dev_repo_names(tree):
     dev_repo_names = tree.xpath('//span[@class="repo"]')
@@ -97,11 +104,13 @@ def get_trending_dev_repo_names(tree):
     dev_repo_names = [replace_new_lines_and_strip(each) for each in dev_repo_names]
     return dev_repo_names
 
+
 def get_trending_dev_repo_desc(tree):
     dev_repo_desc = tree.xpath('//span[@class="repo-snipit-description css-truncate-target"]')
     dev_repo_desc = [" ".join([x for x in each.itertext()]) for each in dev_repo_desc]
     dev_repo_desc = [replace_new_lines_and_strip(each) for each in dev_repo_desc]
     return dev_repo_desc
+
 
 def get_trending_devs(**kwargs):
     devs = []
@@ -140,8 +149,6 @@ def main(repo, dev, lang, time):
     language = None
     if lang:
         language = str(lang)
-    if time:
-        timespan = time
     opts = {
         'language': language,
         'timespan': time,
@@ -159,4 +166,4 @@ def main(repo, dev, lang, time):
         click.secho(e.message, fg="red", bold=True)
 
 if __name__ == '__main__':
-    cli()
+    main()
