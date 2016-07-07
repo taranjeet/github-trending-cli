@@ -27,7 +27,22 @@ Usage
 
 ```
 $ githubtrending 				# list 25 trending repositories on github
+$ githubtrending --repo or -r   # list 25 trending repositories on github
+$ githubtrending --dev or -d    # list 25 trending developers on github
+$ githubtrending --lang=python or -l=python
+                                # list 25 trending repositories for a particular language on github
+$ githubtrending --week         # list 25 trending repositories on github since a week
+$ githubtrending --month        # list 25 trending repositories on github since a month
 
+```
+
+Examples
+=========
+
+```
+$ githubtrending --repo --lang=python --week        # lists 25 trending repositories of python since a week
+$ githubtrending --dev --lang=javascript --month    # lists 25 trending developers of javascript since a month
+$ githubtrending --repo --week                      # lists 25 repositories since a week
 ```
 
 Available Options
@@ -40,17 +55,6 @@ Available Options
  -d, --dev 				Lists 25 trending developers
 
 ```
-
-Todos
-=====
-
-- [ ] Support for a particular language
-- [X] Support for Trending Developers
-- [ ] Catch Exception
-- [X] Proper output to console
-- [ ] Parse directly from github
-- [ ] Modify this to use to Docopt
-- [ ] Prettify the output on the terminal
 
 Licence
 ====
