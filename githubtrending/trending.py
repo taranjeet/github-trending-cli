@@ -139,9 +139,9 @@ def get_trending_devs(**kwargs):
     '--dev', '-d', is_flag=True,
     help="Lists the trending developers.")
 @click.option('--lang', '-l', help='Specify the language')
-@click.option('--week', 'time', flag_value='weekly')
-@click.option('--month', 'time', flag_value='monthly')
-def main(repo, dev, lang, time):
+@click.option('--week', 'timespan', flag_value='weekly')
+@click.option('--month', 'timespan', flag_value='monthly')
+def main(repo, dev, lang, timespan):
     '''
     A command line utility to see the trending repositories
     and developers on Github
@@ -151,7 +151,7 @@ def main(repo, dev, lang, time):
         language = str(lang)
     opts = {
         'language': language,
-        'timespan': time,
+        'timespan': timespan,
     }
     try:
         if repo:
