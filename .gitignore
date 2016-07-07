@@ -2,4 +2,3 @@
 pyenv*/*
 *.egg-info/
 dist/*
-setup.cfg
