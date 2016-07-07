@@ -12,7 +12,7 @@ requests.packages.urllib3.disable_warnings()
 
 
 def replace_new_lines_and_strip(s):
-    return s.strip().strip('\n')
+    return s.strip()
 
 
 def replace_new_lines_and_multiple_spaces(s):
@@ -55,7 +55,7 @@ def get_trending_repo_meta(tree):
 
 
 def get_trending_repo_stars_and_languages(repo_meta):
-    dot = '•'.decode('utf8').encode('utf8')
+    dot = u'•'.encode('utf8')
     repo_stars_and_langauges = []
     for each in repo_meta:
         meta = each.text.strip().encode('utf8')
@@ -63,10 +63,10 @@ def get_trending_repo_stars_and_languages(repo_meta):
         if dot in meta:
             temp = meta.split(dot)
             for each_option in temp:
-                if "stars" in each_option:
-                    stars = replace_new_lines_and_strip(each_option)
-                elif "built by" not in each_option.lower() and "stars" not in each_option.lower():
-                    language = replace_new_lines_and_strip(each_option)
+                if b"stars" in each_option:
+                    stars = replace_new_lines_and_strip(each_option).decode('utf8')
+                elif b"built by" not in each_option.lower() and b"stars" not in each_option.lower():
+                    language = replace_new_lines_and_strip(each_option).decode('utf8')
             repo_stars_and_langauges.append([stars, language])
     return repo_stars_and_langauges
 
@@ -86,7 +86,7 @@ def get_trending_repos(**kwargs):
         repo_desc = get_trending_repo_description(tree)
         repo_meta = get_trending_repo_meta(tree)
         repo_stars_and_languages = get_trending_repo_stars_and_languages(repo_meta)
-        repos = zip(repo_names, repo_desc, repo_stars_and_languages)
+        repos = list(zip(repo_names, repo_desc, repo_stars_and_languages))
         writers.print_trending_repos(repos)
     return repos
 
@@ -126,7 +126,7 @@ def get_trending_devs(**kwargs):
         dev_names = get_trending_dev_names(tree)
         dev_repo_names = get_trending_dev_repo_names(tree)
         dev_repo_desc = get_trending_dev_repo_desc(tree)
-        devs = zip(dev_names, dev_repo_names, dev_repo_desc)
+        devs = list(zip(dev_names, dev_repo_names, dev_repo_desc))
         writers.print_trending_devs(devs)
     return devs
 
