@@ -2,6 +2,7 @@ import click
 
 from . import utils
 
+
 def print_title(is_repo=True):
     rows, cols = utils.get_console_size()
     title = "TRENDING {} ON GITHUB".format("REPOSITORIES" if is_repo else "DEVELOPERS")
@@ -10,11 +11,12 @@ def print_title(is_repo=True):
     click.secho("%*s" % (cols/2, title), bold=True)
     click.secho("%s" % ('#'*cols), bold=True)
 
+
 def print_headers(print_size, is_repo=True):
 
     print_title(is_repo)
     click.echo()
-    
+
     if is_repo:
         click.secho(
             "%*s" % (print_size["IDX"], '#'),
@@ -64,6 +66,7 @@ def print_trending_repos(data):
             " %s" % (description),
             nl=False, bold=True, fg=COLOR['DESC'])
     print('')
+
 
 def print_trending_devs(data):
 
