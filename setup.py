@@ -41,9 +41,9 @@ setup(
     packages=['githubtrending'],
     install_requires=[
         'requests==2.7.0',
-        'colorama>=0.3.3',
+        "click>=5.0",
         'lxml>=3.3'
-    ],
+    ] + (["colorama==0.3.3"] if "win" in sys.platform else []),
     entry_points={
         'console_scripts': [
             'githubtrending = githubtrending.trending:main'
