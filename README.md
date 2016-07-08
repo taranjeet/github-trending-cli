@@ -3,8 +3,7 @@ Github Trending Cli
 
 [![PyPI version](https://badge.fury.io/py/github-trending.svg)](https://badge.fury.io/py/github-trending)
 
-This python package lists the trending repositories from github.
-A Cli for Github trending repositories
+A cli which lists the trending repositories and developers from Github.
 
 Install
 =======
@@ -53,6 +52,9 @@ Available Options
  --help 				Lists the help and option available
  -r, --repo 			Lists 25 trending repositories
  -d, --dev 				Lists 25 trending developers
+ -l, --lang             Takes language as a parameter and lists repo of that language
+ --week                 Lists trending repos/devs since a week
+ --month                Lists trending repos/devs since a month
 
 ```
 
@@ -64,4 +66,3 @@ Package Link
 ============
 
 Pypi [link](https://pypi.python.org/pypi/github-trending)
-
