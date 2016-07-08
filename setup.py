@@ -40,12 +40,13 @@ setup(
     url='https://github.com/staranjeet/github-trending-cli',
     packages=['githubtrending'],
     install_requires=[
-        "click>=5.0",
-        "requests>=2.7.0"
-    ] + (["colorama==0.3.3"] if "win" in sys.platform else []),
+        'requests==2.7.0',
+        'colorama>=0.3.3',
+        'lxml>=3.3'
+    ],
     entry_points={
         'console_scripts': [
-            'githubtrending = githubtrending.trending:cli'
+            'githubtrending = githubtrending.trending:main'
             ],
     }
 )
