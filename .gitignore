@@ -1,4 +1,12 @@
-*.pyc
+# Python byte compiled files
+*.py[co]
+
+# Virtual Env
 pyenv*/*
+py*/*
+
 *.egg-info/
 dist/*
+
+# Coverage files
+htmlcov/*
