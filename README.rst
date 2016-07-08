@@ -1,7 +1,8 @@
 Github Trending Cli
 ===================
 
-[![PyPI version](https://badge.fury.io/py/github-trending.svg)](https://badge.fury.io/py/github-trending)
+[![PyPI version](https://badge.fury.io/py/github-trending.svg)](https://badge.fury.io/py/github-trending) [![Build Status](https://travis-ci.org/staranjeet/github-trending-cli.svg?branch=master)](https://travis-ci.org/staranjeet/github-trending-cli) [![Build Status](https://travis-ci.org/staranjeet/github-trending-cli.svg?branch=master)](https://travis-ci.org/staranjeet/github-trending-cli)
+
 
 A cli which lists the trending repositories and developers from Github.
 
