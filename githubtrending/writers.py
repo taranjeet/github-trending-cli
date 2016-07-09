@@ -48,7 +48,10 @@ def print_trending_repos(data):
     print_headers(print_size)
 
     for idx, each in enumerate(data):
-        repo_name, description, [stars, language] = each
+        repo_name = each.get('repo_name')
+        description = each.get('description')
+        stars = each.get('stars')
+        language = each.get('language')
         click.echo()
         click.secho(
             "%*s" % (print_size["IDX"], str(idx+1)),

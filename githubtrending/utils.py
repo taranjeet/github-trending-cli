@@ -13,7 +13,9 @@ def get_console_size():
 def get_print_size_for_repo(data):
     name, lang, star = [0]*3
     for each in data:
-        repo_name, desc, [stars, language] = each
+        repo_name = each.get('repo_name')
+        stars = each.get('stars')
+        language = each.get('language')
         name = max(len(repo_name), name)
         lang = max(len(language), lang)
         star = max(len(stars), star)

@@ -87,6 +87,11 @@ def get_trending_repos(**kwargs):
         repo_meta = get_trending_repo_meta(tree)
         repo_stars_and_languages = get_trending_repo_stars_and_languages(repo_meta)
         repos = list(zip(repo_names, repo_desc, repo_stars_and_languages))
+        repos = [{'repo_name': repo_name,
+                  'description': description,
+                  'stars': stars,
+                  'language': lang}
+                 for repo_name, description, [stars, lang] in repos]
     return repos
 
 
