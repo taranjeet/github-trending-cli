@@ -135,7 +135,8 @@ def get_trending_devs(**kwargs):
         devs = list(zip(dev_names, dev_repo_names, dev_repo_desc))
         devs = [{'dev_name': dev_name,
                  'repo_name': repo_name,
-                 'description': description}
+                 'description': description,
+                 'url': HOME_PAGE + '/' + dev_name.split(' ')[0]}
                 for dev_name, repo_name, description in devs]
     return devs
 
