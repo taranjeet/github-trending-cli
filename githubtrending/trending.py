@@ -91,7 +91,8 @@ def get_trending_repos(**kwargs):
         repos = [{'repo_name': repo_name,
                   'description': description,
                   'stars': stars,
-                  'language': lang}
+                  'language': lang,
+                  'url': HOME_PAGE + str(repo_name)}
                  for repo_name, description, [stars, lang] in repos]
     return repos
 
