@@ -7,6 +7,7 @@ from . import writers
 
 TRENDING_REPO_URL = 'http://github.com/trending'
 TRENDING_DEV_URL = 'http://github.com/trending/developers'
+HOME_PAGE = 'https://github.com'
 
 requests.packages.urllib3.disable_warnings()
 
