@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 import click
 import requests
+import webbrowser
 from lxml import etree
 
 from . import writers
 
 TRENDING_REPO_URL = 'http://github.com/trending'
 TRENDING_DEV_URL = 'http://github.com/trending/developers'
+HOME_PAGE = 'https://github.com'
 
 requests.packages.urllib3.disable_warnings()
 
@@ -90,7 +92,8 @@ def get_trending_repos(**kwargs):
         repos = [{'repo_name': repo_name,
                   'description': description,
                   'stars': stars,
-                  'language': lang}
+                  'language': lang,
+                  'url': HOME_PAGE + str(repo_name)}
                  for repo_name, description, [stars, lang] in repos]
     return repos
 
@@ -133,7 +136,8 @@ def get_trending_devs(**kwargs):
         devs = list(zip(dev_names, dev_repo_names, dev_repo_desc))
         devs = [{'dev_name': dev_name,
                  'repo_name': repo_name,
-                 'description': description}
+                 'description': description,
+                 'url': HOME_PAGE + '/' + dev_name.split(' ')[0]}
                 for dev_name, repo_name, description in devs]
     return devs
 
@@ -148,7 +152,8 @@ def get_trending_devs(**kwargs):
 @click.option('--lang', '-l', help='Specify the language')
 @click.option('--week', 'timespan', flag_value='weekly')
 @click.option('--month', 'timespan', flag_value='monthly')
-def main(repo, dev, lang, timespan):
+@click.argument('goto', nargs=1, required=False, type=click.INT)
+def main(repo, dev, lang, timespan, goto):
     '''
     A command line utility to see the trending repositories
     and developers on Github
@@ -163,14 +168,26 @@ def main(repo, dev, lang, timespan):
     try:
         if repo:
             repos = get_trending_repos(**opts)
-            writers.print_trending_repos(repos)
+            if goto:
+                webbrowser.open(repos[goto-1]['url'], new=2)
+                return
+            else:
+                writers.print_trending_repos(repos)
         if dev:
             devs = get_trending_devs(**opts)
-            writers.print_trending_devs(devs)
+            if goto:
+                webbrowser.open(devs[goto-1]['url'], new=2)
+                return
+            else:
+                writers.print_trending_devs(devs)
         # if the user does not passes any argument then list the trending repo
         if not repo and not dev:
             repos = get_trending_repos(**opts)
-            writers.print_trending_repos(repos)
+            if goto:
+                webbrowser.open(repos[goto-1]['url'], new=2)
+                return
+            else:
+                writers.print_trending_repos(repos)
         return
     except Exception as e:
         click.secho(e.message, fg="red", bold=True)
