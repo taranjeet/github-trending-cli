@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import click
 import requests
+import webbrowser
 from lxml import etree
 
 from . import writers
@@ -151,7 +152,8 @@ def get_trending_devs(**kwargs):
 @click.option('--lang', '-l', help='Specify the language')
 @click.option('--week', 'timespan', flag_value='weekly')
 @click.option('--month', 'timespan', flag_value='monthly')
-def main(repo, dev, lang, timespan):
+@click.argument('goto', nargs=1, required=False, type=click.INT)
+def main(repo, dev, lang, timespan, goto):
     '''
     A command line utility to see the trending repositories
     and developers on Github
@@ -166,14 +168,22 @@ def main(repo, dev, lang, timespan):
     try:
         if repo:
             repos = get_trending_repos(**opts)
-            writers.print_trending_repos(repos)
+            if goto:
+                webbrowser.open(repos[goto-1]['url'], new=2)
+                return
+            else:
+                writers.print_trending_repos(repos)
         if dev:
             devs = get_trending_devs(**opts)
             writers.print_trending_devs(devs)
         # if the user does not passes any argument then list the trending repo
         if not repo and not dev:
             repos = get_trending_repos(**opts)
-            writers.print_trending_repos(repos)
+            if goto:
+                webbrowser.open(repos[goto-1]['url'], new=2)
+                return
+            else:
+                writers.print_trending_repos(repos)
         return
     except Exception as e:
         click.secho(e.message, fg="red", bold=True)
