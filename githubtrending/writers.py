@@ -80,7 +80,9 @@ def print_trending_devs(data):
 
     for idx, each in enumerate(data):
         click.echo()
-        dev_name, repo_name, description = each
+        dev_name = each.get('dev_name')
+        repo_name = each.get('repo_name')
+        description = each.get('description')
         click.secho(
             "%*s" % (print_size["IDX"], str(idx+1)),
             nl=False, bold=True, fg=COLOR['IDX'])

@@ -31,7 +31,8 @@ def get_print_size_for_repo(data):
 def get_print_size_for_dev(data):
     dev, repo = [0]*2
     for each in data:
-        dev_name, repo_name, description = each
+        dev_name = each.get('dev_name')
+        repo_name = each.get('repo_name')
         dev = max(len(dev_name), dev)
         repo = max(len(repo_name), repo)
 
