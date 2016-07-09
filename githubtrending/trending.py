@@ -131,7 +131,7 @@ def get_trending_devs(**kwargs):
         dev_repo_names = get_trending_dev_repo_names(tree)
         dev_repo_desc = get_trending_dev_repo_desc(tree)
         devs = list(zip(dev_names, dev_repo_names, dev_repo_desc))
-        devs = [{'dev_name':dev_name,
+        devs = [{'dev_name': dev_name,
                  'repo_name': repo_name,
                  'description': description}
                 for dev_name, repo_name, description in devs]
