@@ -87,7 +87,6 @@ def get_trending_repos(**kwargs):
         repo_meta = get_trending_repo_meta(tree)
         repo_stars_and_languages = get_trending_repo_stars_and_languages(repo_meta)
         repos = list(zip(repo_names, repo_desc, repo_stars_and_languages))
-        writers.print_trending_repos(repos)
     return repos
 
 
@@ -127,7 +126,6 @@ def get_trending_devs(**kwargs):
         dev_repo_names = get_trending_dev_repo_names(tree)
         dev_repo_desc = get_trending_dev_repo_desc(tree)
         devs = list(zip(dev_names, dev_repo_names, dev_repo_desc))
-        writers.print_trending_devs(devs)
     return devs
 
 
@@ -155,12 +153,15 @@ def main(repo, dev, lang, timespan):
     }
     try:
         if repo:
-            get_trending_repos(**opts)
+            repos = get_trending_repos(**opts)
+            writers.print_trending_repos(repos)
         if dev:
-            get_trending_devs(**opts)
+            devs = get_trending_devs(**opts)
+            writers.print_trending_devs(devs)
         # if the user does not passes any argument then list the trending repo
         if not repo and not dev:
-            get_trending_repos(**opts)
+            repos = get_trending_repos(**opts)
+            writers.print_trending_repos(repos)
         return
     except Exception as e:
         click.secho(e.message, fg="red", bold=True)
