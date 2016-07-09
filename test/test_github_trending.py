@@ -105,13 +105,13 @@ class GithubTrendingCliTest(unittest.TestCase):
         assert result.exit_code == 0
 
     def test_github_trending_with_open_first_repo_in_browser(self):
-        result = self.runner.invoke(githubtrending.main, ['--repo', '1'])
+        self.runner.invoke(githubtrending.main, ['--repo', '1'])
 
     def test_github_trending_with_open_third_dev_in_browser(self):
-        result = self.runner.invoke(githubtrending.main, ['--dev', '3'])
+        self.runner.invoke(githubtrending.main, ['--dev', '3'])
 
     def test_github_trending_with_open_fifth_repo_in_browser_and_no_args(self):
-        result = self.runner.invoke(githubtrending.main, ['3'])
+        self.runner.invoke(githubtrending.main, ['3'])
 
 if __name__ == '__main__':
     unittest.main()
