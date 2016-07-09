@@ -175,7 +175,11 @@ def main(repo, dev, lang, timespan, goto):
                 writers.print_trending_repos(repos)
         if dev:
             devs = get_trending_devs(**opts)
-            writers.print_trending_devs(devs)
+            if goto:
+                webbrowser.open(devs[goto-1]['url'], new=2)
+                return
+            else:
+                writers.print_trending_devs(devs)
         # if the user does not passes any argument then list the trending repo
         if not repo and not dev:
             repos = get_trending_repos(**opts)
