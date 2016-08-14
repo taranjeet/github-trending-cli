@@ -1,7 +1,7 @@
 Github Trending Cli
 ===================
 
-[![PyPI version](https://badge.fury.io/py/github-trending.svg)](https://badge.fury.io/py/github-trending) [![Build Status](https://travis-ci.org/TroJan/github-trending-cli.svg?branch=master)](https://travis-ci.org/staranjeet/github-trending-cli) [![Coverage Status](https://coveralls.io/repos/github/TroJan/github-trending-cli/badge.svg?branch=master)](https://coveralls.io/github/TroJan/github-trending-cli?branch=master)
+[![PyPI version](https://badge.fury.io/py/github-trending.svg)](https://badge.fury.io/py/github-trending) [![Build Status](https://travis-ci.org/TroJan/github-trending-cli.svg?branch=master)](https://travis-ci.org/TroJan/github-trending-cli) [![Coverage Status](https://coveralls.io/repos/github/TroJan/github-trending-cli/badge.svg?branch=master)](https://coveralls.io/github/TroJan/github-trending-cli?branch=master)
 
 A cli which lists the trending repositories and developers from Github.
 
